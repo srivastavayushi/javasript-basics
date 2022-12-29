@@ -1,14 +1,14 @@
 // Three pillars of Javascript
   // 1. types/coercion
   // 2. scopes/closures
-  // 3. this / prototypes
+  // 3. this/prototypes
 
 var v;
-console.log(typeof v); // declared and unassigned
-console.log(typeof doesntExist); // undeclared
+console.log("type of v", typeof v); // declared and unassigned
+console.log("type of doesntExist",typeof doesntExist); // undeclared
 
 var nullType = null;
-console.log(typeof(nullType));
+console.log("type of nullType",typeof(nullType));
 
 v = function(){};
 console.log(typeof v);
@@ -55,5 +55,24 @@ myGPA;
 
 // comparison operators autmatically convert operands to numbers
 
-// == -> allows coercion (types different)
-// === -> doesnt allow coercion (types same)
+// == -> allows coercion (types different can result in true since type is converted)
+// === -> doesnt allow coercion (types same since type cannot be converted it should result error if comparison entities types are different)
+
+// sometimes == is more convinient than ===
+// in the below example user only cares about if workshop1 topic and workshop2 topic is empty or not , he is not concerned wether the type if null or undefined (both are empty for him)
+
+
+console.log("Type of null", typeof null);
+console.log("Type of undefined", typeof undefined);
+
+var workshop1 = { topic: null}
+var workshop2 = {}
+
+if((workshop1.topic === null || workshop1.topic === undefined) && (workshop2.topic === null || workshop2.topic === undefined)){
+  console.log("Workshop topic doesnt exist with ===");
+}
+
+// == checks null and undefined coercively to each other
+if(workshop1.topic == null && workshop2.topic == null){
+  console.log("Workshop topic doesnt exisit with == ")
+}
